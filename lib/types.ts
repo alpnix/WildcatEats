@@ -9,7 +9,7 @@ export const createRequestSchema = z.object({
   locationId: z.string().uuid(),
   itemText: z.string().min(6).max(400),
   maxOfferCents: z.number().int().min(200).max(10000),
-  expiresInMinutes: z.number().int().min(10).max(240).default(45)
+  expiresInMinutes: z.number().int().min(1).max(240).default(45)
 });
 
 export const statusUpdateSchema = z.object({
