@@ -27,7 +27,7 @@ export default async function HomePage() {
           Campus Food Runner Forum
         </h1>
         <p className="text-base mb-2" style={{ maxWidth: "36rem", color: "var(--gray-3)" }}>
-          Verified Davidson users can post food requests and runners can fulfill them using Dining Dollars.
+          Verified Davidson users can post food requests and runners can fulfill them using Dining Dollars/Meal Swipes.
         </p>
         <p className="text-xs text-muted mb-6">
           By using WildcatEats, you acknowledge this is an independent student marketplace.
