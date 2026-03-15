@@ -1,9 +1,11 @@
 export default function AdminPage() {
   return (
-    <section className="rounded-2xl border border-ink/10 bg-paper p-4 shadow-sm">
-      <h1 className="font-display text-2xl text-cardinal">Admin Console</h1>
-      <p className="text-sm text-ink/85">Resolve disputes, manage locations, and trigger emergency marketplace pause controls.</p>
-      <p className="mt-2 text-xs text-ink/75">
+    <section className="card" style={{ maxWidth: "40rem" }}>
+      <h1 className="font-serif text-2xl font-bold text-red mb-2">Admin Console</h1>
+      <p className="text-sm text-muted mb-4">
+        Resolve disputes, manage locations, and trigger emergency marketplace pause controls.
+      </p>
+      <p className="text-xs text-muted">
         Implementation note: admin actions are enforced at API level via profiles.is_admin.
       </p>
     </section>

@@ -5,21 +5,21 @@ interface StatusPillProps {
   status: RequestStatus;
 }
 
-export function StatusPill({ status }: StatusPillProps) {
-  const classes: Record<RequestStatus, string> = {
-    open: "bg-mint/20 text-forest",
-    accepted: "bg-amber-100 text-amber-800",
-    purchasing: "bg-amber-100 text-amber-800",
-    picked_up: "bg-sky-100 text-sky-800",
-    delivered_pending_confirm: "bg-purple-100 text-purple-800",
-    completed: "bg-emerald-100 text-emerald-800",
-    canceled: "bg-zinc-200 text-zinc-700",
-    disputed: "bg-rose-100 text-rose-800",
-    expired: "bg-zinc-200 text-zinc-700"
-  };
+const pillClass: Record<RequestStatus, string> = {
+  open: "pill-open",
+  accepted: "pill-accepted",
+  purchasing: "pill-purchasing",
+  picked_up: "pill-picked_up",
+  delivered_pending_confirm: "pill-delivered",
+  completed: "pill-completed",
+  canceled: "pill-canceled",
+  disputed: "pill-disputed",
+  expired: "pill-expired"
+};
 
+export function StatusPill({ status }: StatusPillProps) {
   return (
-    <span className={clsx("inline-flex rounded-full px-2.5 py-1 text-xs font-semibold capitalize", classes[status])}>
+    <span className={clsx("pill", pillClass[status])}>
       {status.replaceAll("_", " ")}
     </span>
   );

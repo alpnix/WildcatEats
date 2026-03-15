@@ -21,24 +21,26 @@ export function RequestCard({ request }: RequestCardProps) {
   });
 
   return (
-    <article className="group rounded-2xl border border-ink/10 bg-paper p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-      <div className="mb-2 flex items-start justify-between gap-3">
-        <h3 className="font-display text-xl text-ink">{request.locations?.name ?? "Campus Dining"}</h3>
+    <article className="card card-hover">
+      <div className="flex items-start justify-between gap-3 mb-3">
+        <h3 className="font-serif text-xl font-bold">{request.locations?.name ?? "Campus Dining"}</h3>
         <StatusPill status={request.status} />
       </div>
-      <p className="mb-3 line-clamp-3 text-sm text-ink/85">{request.item_text}</p>
-      <div className="mb-4 flex flex-wrap gap-3 text-xs text-ink/75">
+
+      <p className="text-sm line-clamp-3 mb-4" style={{ color: "var(--gray-3)" }}>
+        {request.item_text}
+      </p>
+
+      <div className="flex flex-wrap gap-4 mb-6 font-label text-xs text-muted">
         <span>Offer: ${(request.max_offer_cents / 100).toFixed(2)}</span>
         <span>Expires: {expires}</span>
         <span>
           {request.profiles?.first_name ?? "Student"}
-          {request.profiles?.rating_avg ? ` • ${request.profiles.rating_avg.toFixed(1)}★` : ""}
+          {request.profiles?.rating_avg ? ` \u2022 ${request.profiles.rating_avg.toFixed(1)}\u2605` : ""}
         </span>
       </div>
-      <Link
-        href={`/requests/${request.id}`}
-        className="inline-flex rounded-full bg-cardinal px-4 py-2 text-xs font-bold uppercase tracking-wide text-paper transition hover:bg-cardinal-dark"
-      >
+
+      <Link href={`/requests/${request.id}`} className="btn btn-primary btn-sm">
         View Request
       </Link>
     </article>

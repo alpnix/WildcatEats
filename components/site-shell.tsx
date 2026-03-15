@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { clsx } from "clsx";
 import { ReactNode } from "react";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { LogoutButton } from "@/components/logout-button";
@@ -7,11 +6,6 @@ import { LogoutButton } from "@/components/logout-button";
 interface SiteShellProps {
   children: ReactNode;
 }
-
-const linkCls = clsx(
-  "rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-wide transition",
-  "text-ink/75 hover:bg-cardinal hover:text-paper"
-);
 
 export async function SiteShell({ children }: SiteShellProps) {
   const supabase = createSupabaseServerClient();
@@ -30,15 +24,15 @@ export async function SiteShell({ children }: SiteShellProps) {
   ];
 
   return (
-    <div className="app-bg min-h-screen text-ink">
-      <header className="sticky top-0 z-20 border-b border-ink/20 bg-paper/90 backdrop-blur">
-        <div className="mx-auto flex w-full max-w-4xl items-center justify-between px-4 py-3">
-          <Link href="/" className="font-display text-2xl tracking-tight text-cardinal">
+    <div className="flex flex-col min-h-screen">
+      <header className="site-header">
+        <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4">
+          <Link href="/" className="font-serif text-xl font-bold tracking-tight">
             WildcatEats
           </Link>
-          <nav className="flex items-center gap-1 rounded-full bg-ink/5 p-1">
+          <nav className="flex items-center gap-1">
             {nav.map((item) => (
-              <Link key={item.href} href={item.href} className={linkCls}>
+              <Link key={item.href} href={item.href} className="nav-link">
                 {item.label}
               </Link>
             ))}
@@ -46,7 +40,23 @@ export async function SiteShell({ children }: SiteShellProps) {
           </nav>
         </div>
       </header>
-      <main className="mx-auto w-full max-w-4xl px-4 py-6">{children}</main>
+
+      <main className="mx-auto w-full max-w-5xl px-6 py-10" style={{ flex: "1 1 auto" }}>
+        {children}
+      </main>
+
+      <footer className="site-footer">
+        <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 sm:flex-col sm:gap-4">
+          <div>
+            <span className="font-serif font-bold">WildcatEats</span>
+            <span style={{ margin: "0 0.5rem", opacity: 0.4 }}>&mdash;</span>
+            <span className="text-sm" style={{ opacity: 0.7 }}>Davidson College</span>
+          </div>
+          <p className="text-xs" style={{ opacity: 0.5 }}>
+            &copy; {new Date().getFullYear()} WildcatEats. Independent student marketplace.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }

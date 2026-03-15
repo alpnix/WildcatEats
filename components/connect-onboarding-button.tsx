@@ -28,14 +28,14 @@ export function ConnectOnboardingButton() {
   return (
     <div>
       <button
-        className="inline-flex rounded-full bg-cardinal px-4 py-2 text-xs font-bold uppercase tracking-wide text-paper disabled:opacity-60"
+        className="btn btn-outline"
         onClick={onClick}
         disabled={loading}
         type="button"
       >
         {loading ? "Opening..." : "Connect Stripe"}
       </button>
-      {error ? <p className="mt-2 text-sm text-rose-700">{error}</p> : null}
+      {error ? <p className="mt-3 text-sm text-red">{error}</p> : null}
     </div>
   );
 }

@@ -40,19 +40,16 @@ export function RequestActions({ requestId, requestStatus, isRequester }: Reques
   }
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-3">
       {isRequester ? (
         <>
           {requestStatus === "open" ? (
             <>
-              <Link
-                href={`/requests/${requestId}/edit`}
-                className="inline-flex rounded-full bg-cardinal px-4 py-2 text-xs font-bold uppercase tracking-wide text-paper"
-              >
+              <Link href={`/requests/${requestId}/edit`} className="btn btn-primary">
                 Edit Request
               </Link>
               <button
-                className="rounded-full border border-ink/20 bg-paper px-4 py-2 text-xs font-bold uppercase tracking-wide disabled:opacity-60"
+                className="btn btn-outline"
                 disabled={deleting}
                 onClick={() => void handleDelete()}
                 type="button"
@@ -65,10 +62,7 @@ export function RequestActions({ requestId, requestStatus, isRequester }: Reques
           {["accepted", "purchasing", "picked_up", "delivered_pending_confirm"].includes(requestStatus) ? (
             <form action="/api/stripe/create-payment-intent" method="post">
               <input type="hidden" name="requestId" value={requestId} />
-              <button
-                className="rounded-full border border-ink/20 bg-paper px-4 py-2 text-xs font-bold uppercase tracking-wide"
-                type="submit"
-              >
+              <button className="btn btn-outline" type="submit">
                 Prepare Payment
               </button>
             </form>
@@ -76,10 +70,7 @@ export function RequestActions({ requestId, requestStatus, isRequester }: Reques
 
           {requestStatus === "delivered_pending_confirm" ? (
             <form action={`/api/requests/${requestId}/confirm-delivery`} method="post">
-              <button
-                className="rounded-full border border-ink/20 bg-paper px-4 py-2 text-xs font-bold uppercase tracking-wide"
-                type="submit"
-              >
+              <button className="btn btn-primary" type="submit">
                 Confirm Delivery
               </button>
             </form>
@@ -89,7 +80,7 @@ export function RequestActions({ requestId, requestStatus, isRequester }: Reques
         <>
           {requestStatus === "open" ? (
             <form action={`/api/requests/${requestId}/accept`} method="post">
-              <button className="rounded-full bg-cardinal px-4 py-2 text-xs font-bold uppercase tracking-wide text-paper" type="submit">
+              <button className="btn btn-primary" type="submit">
                 Accept Request
               </button>
             </form>
@@ -97,7 +88,7 @@ export function RequestActions({ requestId, requestStatus, isRequester }: Reques
         </>
       )}
 
-      {message ? <p className="basis-full text-sm text-ink/85">{message}</p> : null}
+      {message ? <p className="w-full text-sm text-red mt-2">{message}</p> : null}
     </div>
   );
 }

@@ -22,28 +22,28 @@ export default async function HomePage() {
 
   return (
     <section>
-      <div className="mb-4 rounded-2xl border border-ink/10 bg-paper p-4 shadow-sm">
-        <h1 className="font-display text-2xl text-cardinal">Campus Food Runner Forum</h1>
-        <p className="text-sm text-ink/85">
+      <div className="section-hero">
+        <h1 className="font-serif text-4xl font-bold tracking-tight mb-4">
+          Campus Food Runner Forum
+        </h1>
+        <p className="text-base mb-2" style={{ maxWidth: "36rem", color: "var(--gray-3)" }}>
           Verified Davidson users can post food requests and runners can fulfill them using Dining Dollars.
         </p>
-        <p className="text-xs text-ink/75">
+        <p className="text-xs text-muted mb-6">
           By using WildcatEats, you acknowledge this is an independent student marketplace.
         </p>
-        <div className="mt-3">
-          <Link href="/requests/new" className="inline-flex rounded-full bg-cardinal px-4 py-2 text-xs font-bold uppercase tracking-wide text-paper">
-            Post a Request
-          </Link>
-        </div>
+        <Link href="/requests/new" className="btn btn-primary">
+          Post a Request
+        </Link>
       </div>
 
-      <div className="grid gap-4">
+      <div className="grid gap-6">
         {normalized.map((request) => (
           <RequestCard key={request.id} request={request} />
         ))}
         {!normalized.length && (
-          <article className="rounded-2xl border border-ink/10 bg-paper p-4 text-sm text-ink/75 shadow-sm">
-            No active requests yet. Post the first one.
+          <article className="card">
+            <p className="text-sm text-muted">No active requests yet. Post the first one.</p>
           </article>
         )}
       </div>

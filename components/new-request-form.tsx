@@ -73,16 +73,21 @@ export function NewRequestForm({ initialRequest }: NewRequestFormProps) {
   }
 
   return (
-    <section className="rounded-2xl border border-ink/10 bg-paper p-4 shadow-sm">
-      <h1 className="font-display text-2xl text-cardinal">{isEditing ? "Edit Food Request" : "Post Food Request"}</h1>
-      <p className="text-sm text-ink/85">Runner payout is released after you confirm delivery (or in 24 hours).</p>
+    <section className="card">
+      <h1 className="font-serif text-2xl font-bold text-red mb-2">
+        {isEditing ? "Edit Food Request" : "Post Food Request"}
+      </h1>
+      <p className="text-sm text-muted mb-6">
+        Runner payout is released after you confirm delivery (or in 24 hours).
+      </p>
 
-      <form onSubmit={onSubmit} className="mt-4 grid gap-3">
-        <label className="text-sm">
-          Dining location
+      <form onSubmit={onSubmit} className="grid gap-6">
+        <div>
+          <label htmlFor="locationId" className="form-label">Dining Location</label>
           <select
+            id="locationId"
             name="locationId"
-            className="mt-1 w-full rounded-xl border border-ink/20 p-2"
+            className="form-input"
             defaultValue={initialRequest?.locationId ?? ""}
             required
           >
@@ -93,59 +98,61 @@ export function NewRequestForm({ initialRequest }: NewRequestFormProps) {
               </option>
             ))}
           </select>
-        </label>
+        </div>
 
-        <label className="text-sm">
-          Food request details
+        <div>
+          <label htmlFor="itemText" className="form-label">Food Request Details</label>
           <textarea
+            id="itemText"
             name="itemText"
             rows={5}
             maxLength={400}
-            className="mt-1 w-full rounded-xl border border-ink/20 p-2"
+            className="form-input"
             placeholder="Example: 1 spicy chicken sandwich meal + medium fries"
             defaultValue={initialRequest?.itemText ?? ""}
             required
+            style={{ resize: "vertical" }}
           />
-        </label>
+        </div>
 
-        <div className="grid gap-3" style={{ gridTemplateColumns: "1fr 1fr" }}>
-          <label className="text-sm">
-            Offer (USD)
+        <div className="grid gap-6" style={{ gridTemplateColumns: "1fr 1fr" }}>
+          <div>
+            <label htmlFor="maxOfferDollars" className="form-label">Offer (USD)</label>
             <input
+              id="maxOfferDollars"
               type="number"
               min={2}
               step={0.5}
               name="maxOfferDollars"
-              className="mt-1 w-full rounded-xl border border-ink/20 p-2"
+              className="form-input"
               defaultValue={initialRequest ? initialRequest.maxOfferCents / 100 : undefined}
               required
             />
-          </label>
+          </div>
 
-          <label className="text-sm">
-            Expires in (minutes)
+          <div>
+            <label htmlFor="expiresInMinutes" className="form-label">Expires In (Minutes)</label>
             <input
+              id="expiresInMinutes"
               type="number"
               min={1}
               max={240}
               defaultValue={initialRequest?.expiresInMinutes ?? 45}
               name="expiresInMinutes"
-              className="mt-1 w-full rounded-xl border border-ink/20 p-2"
+              className="form-input"
               required
             />
-          </label>
+          </div>
         </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="inline-flex w-fit rounded-full bg-cardinal px-4 py-2 text-xs font-bold uppercase tracking-wide text-paper disabled:opacity-60"
-        >
-          {loading ? (isEditing ? "Saving..." : "Posting...") : isEditing ? "Save changes" : "Create request"}
-        </button>
+        <div>
+          <button type="submit" disabled={loading} className="btn btn-primary">
+            {loading ? (isEditing ? "Saving..." : "Posting...") : isEditing ? "Save Changes" : "Create Request"}
+          </button>
+        </div>
       </form>
 
-      {message ? <p className="mt-3 text-sm text-ink/85">{message}</p> : null}
+      {message ? <p className="mt-4 text-sm text-muted">{message}</p> : null}
     </section>
   );
 }

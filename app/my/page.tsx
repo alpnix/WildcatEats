@@ -3,20 +3,24 @@ import { ConnectOnboardingButton } from "@/components/connect-onboarding-button"
 
 export default function MyPage() {
   return (
-    <section className="rounded-2xl border border-ink/10 bg-paper p-4 shadow-sm">
-      <h1 className="font-display text-2xl text-cardinal">My Activity</h1>
-      <p className="mb-4 text-sm text-ink/85">Track your requests, accepted runs, payouts, and disputes.</p>
-      <ul className="text-sm text-ink/85">
+    <section className="card" style={{ maxWidth: "40rem" }}>
+      <h1 className="font-serif text-2xl font-bold text-red mb-2">My Activity</h1>
+      <p className="text-sm text-muted mb-6">
+        Track your requests, accepted runs, payouts, and disputes.
+      </p>
+
+      <ul className="text-sm mb-8" style={{ paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.375rem", color: "var(--gray-3)" }}>
         <li>Use the forum to open your requests.</li>
         <li>Open each request card to manage delivery and confirmation.</li>
         <li>Payouts are held until confirmation or 24-hour auto-release.</li>
       </ul>
-      <div className="mt-4">
+
+      <div className="flex flex-wrap gap-3">
         <ConnectOnboardingButton />
+        <Link href="/" className="btn btn-primary">
+          Back to Forum
+        </Link>
       </div>
-      <Link href="/" className="mt-4 inline-flex rounded-full bg-cardinal px-4 py-2 text-xs font-bold uppercase tracking-wide text-paper">
-        Back to Forum
-      </Link>
     </section>
   );
 }
