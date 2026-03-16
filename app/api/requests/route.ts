@@ -9,11 +9,12 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
 export async function GET(request: NextRequest) {
   try {
-    await getCurrentUserOrThrow();
+    const user = await getCurrentUserOrThrow();
     const supabase = createSupabaseAdminClient();
 
     const status = request.nextUrl.searchParams.get("status");
     const locationId = request.nextUrl.searchParams.get("location_id");
+    const mine = request.nextUrl.searchParams.get("mine"); // "requester" | "runner"
     const limit = Math.min(Number(request.nextUrl.searchParams.get("limit") ?? 20), 50);
 
     let query = supabase
@@ -30,6 +31,12 @@ export async function GET(request: NextRequest) {
 
     if (locationId) {
       query = query.eq("location_id", locationId);
+    }
+
+    if (mine === "requester") {
+      query = query.eq("requester_id", user.id);
+    } else if (mine === "runner") {
+      query = query.eq("runner_id", user.id);
     }
 
     const { data, error } = await query;
