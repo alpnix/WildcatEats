@@ -210,6 +210,10 @@ img {
 /* ===== POSITIONING ===== */
 
 .sticky { position: sticky; }
+
+[id] {
+  scroll-margin-top: 80px;
+}
 .relative { position: relative; }
 .top-0 { top: 0; }
 .z-50 { z-index: 50; }

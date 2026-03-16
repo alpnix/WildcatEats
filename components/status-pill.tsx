@@ -17,10 +17,22 @@ const pillClass: Record<RequestStatus, string> = {
   expired: "pill-expired"
 };
 
+const labels: Record<RequestStatus, string> = {
+  open: "Request Open",
+  accepted: "Request Accepted",
+  purchasing: "Request Purchasing",
+  picked_up: "Request Picked Up",
+  delivered_pending_confirm: "Delivery Pending",
+  completed: "Request Completed",
+  canceled: "Request Canceled",
+  disputed: "Request Disputed",
+  expired: "Request Expired"
+};
+
 export function StatusPill({ status }: StatusPillProps) {
   return (
     <span className={clsx("pill", pillClass[status])}>
-      {status.replaceAll("_", " ")}
+      {labels[status]}
     </span>
   );
 }
