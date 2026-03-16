@@ -32,6 +32,14 @@
   padding: 0;
 }
 
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
 /* ===== BASE ===== */
 
 html {
@@ -202,6 +210,10 @@ img {
 /* ===== POSITIONING ===== */
 
 .sticky { position: sticky; }
+
+[id] {
+  scroll-margin-top: 80px;
+}
 .relative { position: relative; }
 .top-0 { top: 0; }
 .z-50 { z-index: 50; }
@@ -363,7 +375,7 @@ img {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.9);
   border-radius: var(--radius);
   transition: color 0.2s ease, background-color 0.2s ease;
   min-height: 44px;
@@ -395,7 +407,7 @@ img {
 /* ===== SECTION ===== */
 
 .section-hero {
-  padding: var(--section-pad-y) 0;
+  padding: 2rem 0 var(--section-pad-y);
   border-bottom: 1px solid var(--gray-1);
   margin-bottom: 2.5rem;
 }

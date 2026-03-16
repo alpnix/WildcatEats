@@ -14,7 +14,7 @@ export async function SiteShell({ children }: SiteShellProps) {
   } = await supabase.auth.getUser();
 
   const nav = [
-    { href: "/", label: "Forum" },
+    { href: "/#requests", label: "Forum" },
     ...(user
       ? [
           { href: "/requests/new", label: "Post" },
