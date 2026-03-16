@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export const dynamic = "force-dynamic";
@@ -9,8 +8,6 @@ export default async function AboutPage() {
   const {
     data: { user }
   } = await supabase.auth.getUser();
-
-  if (user) redirect("/forum");
 
   return (
     <section>
@@ -24,12 +21,20 @@ export default async function AboutPage() {
           dollars or meal swipes.
         </p>
         <div className="flex gap-3 justify-center">
-          <Link href="/auth" className="btn btn-primary">
-            Sign In
-          </Link>
-          <Link href="/forum" className="btn btn-outline">
-            Browse the Forum
-          </Link>
+          {user ? (
+            <Link href="/forum" className="btn btn-primary">
+              Go to Forum
+            </Link>
+          ) : (
+            <>
+              <Link href="/auth" className="btn btn-primary">
+                Sign In
+              </Link>
+              <Link href="/forum" className="btn btn-outline">
+                Browse the Forum
+              </Link>
+            </>
+          )}
         </div>
       </div>
 
