@@ -51,7 +51,7 @@ export default async function ForumPage() {
           Campus Food Runner Forum
         </h1>
         <p className="text-base mb-2" style={{ maxWidth: "36rem", color: "var(--gray-3)" }}>
-          If you're a Davidson student low on swipes or dining dollars, post a request to match with a runner.
+          If you&apos;re a Davidson student low on swipes or dining dollars, post a request to match with a runner.
         </p>
         <p className="text-xs text-muted mb-6">
           By using WildcatEats, you acknowledge this is an independent student marketplace.

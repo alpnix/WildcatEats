@@ -50,7 +50,7 @@ export default async function AboutPage() {
           <ul className="text-sm" style={{ paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.75rem", color: "var(--gray-3)" }}>
             <li><strong style={{ color: "var(--black)" }}>When you pay.</strong> Your card is charged when a runner accepts your request. The funds are held securely by Stripe until delivery is confirmed.</li>
             <li><strong style={{ color: "var(--black)" }}>When the runner gets paid.</strong> The runner receives their payout in USD via Stripe after they upload a GrubHub receipt — including timestamp — as verified proof that the order was placed.</li>
-            <li><strong style={{ color: "var(--black)" }}>Cancellations.</strong> You can cancel and receive a full refund at any point before the runner's GrubHub receipt is uploaded and confirmed. Once the receipt is confirmed, no refunds are issued.</li>
+            <li><strong style={{ color: "var(--black)" }}>Cancellations.</strong> You can cancel and receive a full refund at any point before the runner&apos;s GrubHub receipt is uploaded and confirmed. Once the receipt is confirmed, no refunds are issued.</li>
             <li><strong style={{ color: "var(--black)" }}>Disputes.</strong> If something goes wrong, either party can open a dispute for admin review.</li>
           </ul>
         </div>
